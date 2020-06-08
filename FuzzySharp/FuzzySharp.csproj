@@ -1,30 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFrameworks>netcoreapp2.0;netcoreapp2.1;netstandard1.6;netstandard2.0;netstandard2.1;net45;net46;net461</TargetFrameworks>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Authors>Jacob Bayer</Authors>
-        <Description>Fuzzy string matcher based on FuzzyWuzzy algorithm from SeatGeek</Description>
-        <PackageTags>Fuzzy String Matching Comparison FuzzyWuzzy FuzzySharp</PackageTags>
-        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <RepositoryUrl>https://github.com/JakeBayer/FuzzySharp</RepositoryUrl>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <RepositoryType>git</RepositoryType>
-        <Company />
-        <Version>2.0.1</Version>
-        <PackageReleaseNotes>Fix issue with Levenshtein.cs where the returned MatchingBlocks were not correct. Credit goes to BobLd (https://github.com/BobLd)</PackageReleaseNotes>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <PackageProjectUrl>https://github.com/JakeBayer/FuzzySharp</PackageProjectUrl>
-        <AssemblyVersion>1.0.4.0</AssemblyVersion>
-        <FileVersion>1.0.4.0</FileVersion>
-        <OutputType>Library</OutputType>
-    </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <Reference Include="System">
-            <HintPath>System</HintPath>
-        </Reference>
-		<None Include="README.md" pack="true" PackagePath="." />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BoomTown.FuzzySharp\BoomTown.FuzzySharp.csproj" />
+  </ItemGroup>
 
 </Project>
