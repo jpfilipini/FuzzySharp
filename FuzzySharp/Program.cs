@@ -9,16 +9,13 @@ namespace FuzzySharp
     {
         static void Main(string[] args)
         {
-
             //O arquivo se encontra na pasta Data, dentro do projeto
             Console.WriteLine("Digite o caminho onde está o arquivo alunos.csv: ");
             string nome = Console.ReadLine();
             string path = nome + @"\alunos.csv";
             Console.WriteLine(path);
-
-            var encode = Encoding.GetEncoding("ISO-8859-1");
-
-            using (TextFieldParser csvParser = new TextFieldParser(path, encode))
+        
+            using (TextFieldParser csvParser = new TextFieldParser(path, Encoding.GetEncoding("ISO-8859-1")))
             {
 
                 // Define o delimitador, o icone de comentários, e se existem campos entre aspas
@@ -34,13 +31,14 @@ namespace FuzzySharp
                    
                     string[] fields = csvParser.ReadFields();
                     //Lê o primeiro conteúdo até encontrar um delimitador
-                    string nome_aluno = fields[0];
+                    string nome_aluno = fields[0].ToUpper();
 
                     //Lê o conteúdo após o delimitador e chama o método para remover a acentuação
-                    string nome_ficticio = fields[1].removerAcentos();
+                    string nome_ficticio = fields[1].ToUpper().removerAcentos();
+
 
                     //Percentual de match individual de cada linha do dataset
-                    int match = Fuzzy.WeightedRatio(nome_aluno, nome_ficticio);
+                    int match = Fuzzy.TokenSetPartialRatio(nome_aluno, nome_ficticio);
                     Console.WriteLine("Nome do Aluno: " + nome_aluno + " Nome Ficticio: " + nome_ficticio + " Percentual de match: " + match + "%");
                 }
             }
